@@ -1,34 +1,28 @@
 package Model;
 
-public class Cell {
-    private int cellX;
-    private int cellY;
-    boolean stateOfLife = true;
-    int neighbor;
+import View.Point;
 
-    public int getCellX() {
-        return cellX;
-    }
+public class Cell extends Point {
+    private boolean stateOfLife = true;
+    private int neighbor;
 
-    public void setCellX(int cellX) {
-        this.cellX = cellX;
-    }
-
-    public int getCellY() {
-        return cellY;
-    }
-
-    public void setCellY(int cellY) {
-        this.cellY = cellY;
+    public Cell(int x, int y, int neighbor, boolean stateOfLife){
+        super(x,y);
+        this.neighbor = neighbor;
+        this.stateOfLife = stateOfLife;
     }
 
     public boolean isStateOfLife() {
         return stateOfLife;
     }
 
-
     public int getNeighbor() {
         return neighbor;
     }
 
-}
+    public void setNeighbor(int neighbor) {
+        this.neighbor = neighbor;
+    }
+
+    }
+

@@ -6,15 +6,19 @@ import java.util.ArrayList;
 public class Model {
     int x;
     int y;
+    public Cell cell;
     public Model(int width, int height) {
 
+
+        cell = new Cell(20,20,0,true);
     }
 
     public void update() {
+
     }
 
     public Shape[] getShapes() {
-        Point[] points = {new Point(10,10), new Point(11,10), new Point(11,11)};
+        Point[] points = {cell};
         return (Shape[])points;
     }
 
