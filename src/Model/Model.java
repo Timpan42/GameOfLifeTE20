@@ -7,8 +7,8 @@ public class Model {
     int width, height, alone, live, abundent;
     private int x;
     private int y;
-    ArrayList<Point> points = new ArrayList<>();
-    ArrayList<Point> cells = new ArrayList<>();
+    ArrayList<Point> curentCells = new ArrayList<>();
+    ArrayList<Point> nextCells = new ArrayList<>();
 
 
     public Model(int width, int height) {
@@ -19,33 +19,41 @@ public class Model {
         abundent = 4;
         x++;
         y += 1;
-        cells = points;
+        nextCells = curentCells;
 
-        points.add(new Point(5,5));
-        points.add(new Point(6,5));
-        points.add(new Point(7,5));
+        curentCells.add(new Point(5,5));
+        curentCells.add(new Point(6,5));
+        curentCells.add(new Point(7,5));
     }
 
     public void update() {
+        nextCells = curentCells;
         rules();
         updateCells();
-    }
-
-    public Shape[] getShapes() {
-        Point[] pixelsToDisplay = new Point[points.size()];
-        points.toArray(pixelsToDisplay);
-        return (Shape[])pixelsToDisplay;
+        curentCells = nextCells;
     }
 
     public void updateCells(){
         Point[] cells = (Point[]) getShapes();
-        cells[0].setX(x);
-        cells[1].setY(y);
-        cells[2].setX(15);
-
+        Point[] next = new Point[nextCells.size()];
+        next = nextCells.toArray(next);
+        for (int i = 0; i < getShapes().length; i++) {
+            x = cells[i].getX();
+            y = cells[i].getY();
+            next[i].setX(x+1);
+            next[i].setY(x+1);
+            cells[i] = next[i];
+        }
     }
 
     public void rules(){
 
+    }
+
+    //klar
+    public Shape[] getShapes() {
+        Point[] pixelsToDisplay = new Point[curentCells.size()];
+        curentCells.toArray(pixelsToDisplay);
+        return (Shape[])pixelsToDisplay;
     }
 }
