@@ -37,12 +37,23 @@ public class Model {
         Point[] cells = (Point[]) getShapes();
         Point[] next = new Point[nextCells.size()];
         next = nextCells.toArray(next);
+        int neighber;
+        int x;
+        int y;
+
         for (int i = 0; i < getShapes().length; i++) {
-            x = cells[i].getX();
-            y = cells[i].getY();
+                x = 1;
+
+            for (int j = 0; j < ; j++) {
+                
+            }
+            /*
             next[i].setX(x+1);
             next[i].setY(x+1);
+
             cells[i] = next[i];
+
+             */
         }
     }
 
