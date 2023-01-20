@@ -17,8 +17,6 @@ public class Model {
         alone = 1;
         live = 3;
         abundent = 4;
-        x++;
-        y += 1;
         nextCells = curentCells;
 
         curentCells.add(new Point(5,5));
@@ -33,31 +31,44 @@ public class Model {
         curentCells = nextCells;
     }
 
-    public void updateCells(){
+    public void rules(){
         Point[] cells = (Point[]) getShapes();
         Point[] next = new Point[nextCells.size()];
         next = nextCells.toArray(next);
-        int neighber;
-        int x;
-        int y;
+        ArrayList<Integer> neighber = new ArrayList<>();
 
         for (int i = 0; i < getShapes().length; i++) {
-                x = 1;
-
-            for (int j = 0; j < ; j++) {
-                
+            int count = 0;
+            int x = cells[i].getX();
+            int y = cells[i].getY();
+            // kollar om cell i har en granne från -1 till 1 i Y led
+            for (int dy = -1; dy <= 1; dy++) {
+                // kollar om cell i har en granne från -1 till 1 i X led
+                for (int dx = -1; dx <= 1; dx++) {
+                    int nx = x + dx;
+                    int ny = y + dy;
+                    for (int j = 0; j < cells.length; j++) {
+                        if (cells[j].getY() == ny && cells[j].getX() == nx) {
+                            count++;
+                        }
+                    }
+                }
             }
-            /*
-            next[i].setX(x+1);
-            next[i].setY(x+1);
 
-            cells[i] = next[i];
+            // spara count för cellen
 
-             */
+
+/*            int nX = cells[i+1].getX();
+            int nY = cells[i+1].getY();
+                if(x+1 == nX  || x-1 == nX || y+1 == nY || y-1 == nY)
+                {
+                    neighber.add();
+                }
+        */
         }
     }
 
-    public void rules(){
+    public void updateCells(){
 
     }
 
